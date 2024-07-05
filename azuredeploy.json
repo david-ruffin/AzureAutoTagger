@@ -21,8 +21,8 @@
             "dependsOn": [
             ],
             "tags": {
-                "Application": "AzureAutoTagger",
-                "ApplicationUrl": "https://github.com/acampb/AzureAutoTagger"
+                "application": "Azure Auto Tagger",
+                "applicationurl": "https://github.com/the-blesss/AzureAutoTagger"
             }
         },
         {
@@ -36,7 +36,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/acampb/AzureAutoTagger/main/eventgridfunction.json",
+                    "uri": "https://raw.githubusercontent.com/the-blesss/AzureAutoTagger/main/eventgridfunction.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -54,7 +54,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/acampb/AzureAutoTagger/main/rbac.json",
+                    "uri": "https://raw.githubusercontent.com/the-blesss/AzureAutoTagger/main/rbac.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -78,7 +78,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/acampb/AzureAutoTagger/main/rbac.json",
+                    "uri": "https://raw.githubusercontent.com/the-blesss/AzureAutoTagger/main/rbac.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
