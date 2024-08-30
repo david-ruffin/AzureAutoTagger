@@ -4,7 +4,7 @@
     "parameters": {},
     "functions": [],
     "variables": {
-        "uniqueString": "[concat(uniqueString(subscription().subscriptionId), '2024')]",
+        "uniqueString": "[uniqueString(subscription().subscriptionId)]",
         "identityName": "[concat('id-autotagger-', variables('uniqueString'))]",
         "planName": "[concat('plan-autotagger-', variables('uniqueString'))]",
         "storageAccountName": "[concat('st', variables('uniqueString'))]",
