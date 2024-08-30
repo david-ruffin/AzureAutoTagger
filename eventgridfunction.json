@@ -4,7 +4,8 @@
     "parameters": {},
     "functions": [],
     "variables": {
-        "uniqueString": "[uniqueString(resourceGroup().id, deployment().name)]",
+        "timestamp": "[replace(utcNow(), ':', '')]",
+        "uniqueString": "[uniqueString(resourceGroup().id, deployment().name, variables('timestamp'))]",
         "storageAccountName": "[take(concat('st', toLower(replace(variables('uniqueString'), '-', ''))), 24)]",
         "identityName": "[concat('id-autotagger-', variables('uniqueString'))]",
         "planName": "[concat('plan-autotagger-', variables('uniqueString'))]",
@@ -176,7 +177,6 @@
             "properties": {
                 "Application_Type": "web"
             }
-
         }
     ],
     "outputs": {
