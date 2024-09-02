@@ -196,4 +196,12 @@
             "value": "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
         },
         "managedIdentityPrincipalId": {
-           
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.principalId]"
+        },
+        "managedIdentityClientId": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
+        }
+    }
+}
