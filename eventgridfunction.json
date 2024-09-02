@@ -80,7 +80,7 @@
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~3"
+                            "value": "~4"
                         },
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
@@ -94,7 +94,8 @@
                             "name": "AZURE_CLIENT_ID",
                             "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
                         }
-                    ]
+                    ],
+                    "powerShellVersion": "7.4"
                 }
             },
             "resources": [
@@ -121,7 +122,7 @@
                 "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
             ],
             "properties": {
-                "powerShellVersion": "~7"
+                "powerShellVersion": "7.4"
             }
         },
         {
@@ -195,12 +196,4 @@
             "value": "[resourceId('Microsoft.Web/sites', variables('functionName'))]"
         },
         "managedIdentityPrincipalId": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.principalId]"
-        },
-        "managedIdentityClientId": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
-        }
-    }
-}
+           
