@@ -68,7 +68,7 @@
                     "appSettings": [
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2019-06-01').keys[0].value)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
@@ -76,7 +76,7 @@
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2019-06-01').keys[0].value)]"
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
@@ -159,8 +159,19 @@
                         {
                             "key": "data.claims.appid",
                             "operatorType": "StringNotIn",
-                            "values" :[
+                            "values": [
                                 "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
+                            ]
+                        },
+                        {
+                            "key": "data.operationName",
+                            "operatorType": "StringNotIn",
+                            "values": [
+                                "Microsoft.Resources/tags/write",
+                                "Microsoft.EventGrid/eventSubscriptions/write",
+                                "Microsoft.HybridCompute/machines/extensions/write",
+                                "Microsoft.EventGrid/systemTopics/write",
+                                "Microsoft.HybridCompute/machines/write"
                             ]
                         }
                     ]
