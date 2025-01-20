@@ -165,6 +165,22 @@
                             ]
                         },
                         {
+                            "key": "data.operationName", 
+                            "operatorType": "StringNotIn",
+                            "values": [
+                                "Microsoft.Resources/tags/write",
+                                "Microsoft.EventGrid/eventSubscriptions/write",
+                                "Microsoft.HybridCompute/machines/extensions/write",
+                                "Microsoft.EventGrid/systemTopics/write",
+                                "Microsoft.HybridCompute/machines/write",
+                                "Microsoft.Maintenance/configurationAssignments/write",
+                                "Microsoft.GuestConfiguration/guestConfigurationAssignments/write", 
+                                "Microsoft.PolicyInsights/PolicyStates/write"
+                            ]
+                        }
+                    ]
+                        },
+                        {
                             "key": "data.operationName",
                             "operatorType": "StringNotIn",
                             "values": [
