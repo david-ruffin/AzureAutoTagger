@@ -136,52 +136,52 @@
             }
         },
         {
-    "name": "[concat(variables('eventGridTopic'), '/', variables('eventGridSubscriptionName'))]",
-    "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
-    "apiVersion": "2020-04-01-preview",
-    "dependsOn": [
-        "[resourceId('Microsoft.EventGrid/systemTopics', variables('eventGridTopic'))]",
-        "[resourceId('Microsoft.Web/sites/sourcecontrols', variables('functionName'), 'web')]"
-    ],
-    "properties": {
-        "destination": {
-            "endpointType": "AzureFunction",
-            "properties": {
-                "resourceId": "[concat(resourceId('Microsoft.Web/sites', variables('functionName')), '/functions/AutoTagger')]",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
-            }
-        },
-        "filter": {
-            "includedEventTypes": [
-                "Microsoft.Resources.ResourceWriteSuccess"
+            "name": "[concat(variables('eventGridTopic'), '/', variables('eventGridSubscriptionName'))]",
+            "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+            "apiVersion": "2020-04-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventGrid/systemTopics', variables('eventGridTopic'))]",
+                "[resourceId('Microsoft.Web/sites/sourcecontrols', variables('functionName'), 'web')]"
             ],
-            "advancedFilters": [
-                {
-                    "operatorType": "StringNotIn",
-                    "key": "data.claims.appid",
-                    "values": [
-                        "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
-                    ]
+            "properties": {
+                "destination": {
+                    "endpointType": "AzureFunction",
+                    "properties": {
+                        "resourceId": "[concat(resourceId('Microsoft.Web/sites', variables('functionName')), '/functions/AutoTagger')]",
+                        "maxEventsPerBatch": 1,
+                        "preferredBatchSizeInKilobytes": 64
+                    }
                 },
-                {
-                    "operatorType": "StringNotIn",
-                    "key": "data.operationName",
-                    "values": [
-                        "Microsoft.Resources/tags/write",
-                        "Microsoft.EventGrid/eventSubscriptions/write",
-                        "Microsoft.HybridCompute/machines/extensions/write",
-                        "Microsoft.EventGrid/systemTopics/write",
-                        "Microsoft.HybridCompute/machines/write",
-                        "Microsoft.Maintenance/configurationAssignments/write",
-                        "Microsoft.GuestConfiguration/guestConfigurationAssignments/write",
-                        "Microsoft.PolicyInsights/PolicyStates/write"
+                "filter": {
+                    "includedEventTypes": [
+                        "Microsoft.Resources.ResourceWriteSuccess"
+                    ],
+                    "advancedFilters": [
+                        {
+                            "operatorType": "StringNotIn",
+                            "key": "data.claims.appid",
+                            "values": [
+                                "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
+                            ]
+                        },
+                        {
+                            "operatorType": "StringNotIn",
+                            "key": "data.operationName",
+                            "values": [
+                                "Microsoft.Resources/tags/write",
+                                "Microsoft.EventGrid/eventSubscriptions/write",
+                                "Microsoft.HybridCompute/machines/extensions/write",
+                                "Microsoft.EventGrid/systemTopics/write",
+                                "Microsoft.HybridCompute/machines/write",
+                                "Microsoft.Maintenance/configurationAssignments/write",
+                                "Microsoft.GuestConfiguration/guestConfigurationAssignments/write",
+                                "Microsoft.PolicyInsights/PolicyStates/write"
+                            ]
+                        }
                     ]
                 }
-            ]
-        }
-    }
-},
+            }
+        },
         {
             "name": "[variables('appInsightsName')]",
             "type": "Microsoft.Insights/components",
