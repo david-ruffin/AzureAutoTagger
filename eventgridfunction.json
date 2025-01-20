@@ -158,7 +158,7 @@
                     ],
                     "advancedFilters": [
                         {
-                            "operatorType": "StringNotIn",
+                            "operatorType": "StringContains",
                             "key": "data.claims.appid",
                             "values": [
                                 "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'full').properties.clientid]"
